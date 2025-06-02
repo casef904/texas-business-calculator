@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Texas Business Exit Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen py-8">
+    <div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+        <div class="text-center mb-8">
+            <div class="flex items-center justify-center mb-4">
+                <svg class="h-12 w-12 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                </svg>
+                <h1 class="text-3xl font-bold text-gray-900">Texas Business Exit Calculator</h1>
+            </div>
+            <p class="text-lg text-gray-600">Discover the complexity of your business valuation</p>
+            <div class="mt-2 text-sm text-amber-600 font-medium">
+                ⚠️ For businesses generating $500K - $10M annually
+            </div>
+        </div>
+
+        <!-- Form Section -->
+        <div id="calculatorForm" class="space-y-6 bg-gray-50 p-6 rounded-lg">
+            <div class="grid md:grid-cols-2 gap-6">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <svg class="h-4 w-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                        Industry Type
+                    </label>
+                    <select id="industry" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                        <option value="">Select your industry</option>
+                        <option value="Electrical Contracting">Electrical Contracting</option>
+                        <option value="Plumbing Services">Plumbing Services</option>
+                        <option value="HVAC Services">HVAC Services</option>
+                        <option value="Construction">Construction</option>
+                        <option value="Oil & Gas Services">Oil & Gas Services</option>
+                        <option value="Solar/Energy Services">Solar/Energy Services</option>
+                        <option value="Industrial Supply">Industrial Supply</option>
+                        <option value="Materials Distribution">Materials Distribution</option>
+                        <option value="B2B Services">B2B Services</option>
+                        <option value="Property Management">Property Management</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <svg class="h-4 w-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1"></path>
+                        </svg>
+                        Annual Revenue
+                    </label>
+                    <input type="number" id="revenue" placeholder="Enter annual revenue" min="500000" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <svg class="h-4 w-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 002 2z"></path>
+                        </svg>
+                        SDE/EBITDA (Annual)
+                    </label>
+                    <input type="number" id="sde" placeholder="Seller's Discretionary Earnings" min="50000" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                    <p class="text-xs text-gray-500 mt-1">Net income + owner salary + benefits + non-business expenses + depreciation</p>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <svg class="h-4 w-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        Years in Business
+                    </label>
+                    <select id="years" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                        <option value="">Select years</option>
+                        <option value="2">2-3 years</option>
+                        <option value="5">4-7 years</option>
+                        <option value="10">8-15 years</option>
+                        <option value="20">15+ years</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                        <svg class="h-4 w-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"></path>
+                        </svg>
+                        Number of Employees
+                    </label>
+                    <select id="employees" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                        <option value="">Select employee count</option>
+                        <option value="1-5">1-5 employees</option>
+                        <option value="6-15">6-15 employees</option>
+                        <option value="16-50">16-50 employees</option>
+                        <option value="50+">50+ employees</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Owner Involvement Level</label>
+                    <select id="ownerInvolvement" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                        <option value="">Select involvement level</option>
+                        <option value="80-100%">80-100% (Business depends on me)</option>
+                        <option value="50-80%">50-80% (Significant involvement)</option>
+                        <option value="20-50%">20-50% (Moderate involvement)</option>
+                        <option value="0-20%">0-20% (Minimal involvement)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Texas Location</label>
+                    <select id="location" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
+                        <option value="">Select location</option>
+                        <option value="Dallas-Fort Worth">Dallas-Fort Worth</option>
+                        <option value="Houston">Houston</option>
+                        <option value="Austin">Austin</option>
+                        <option value="San Antonio">San Antonio</option>
+                        <option value="East Texas">East Texas</option>
+                        <option value="Other Texas Market">Other Texas Market</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Real Estate Ownership</label>
+                <div class="flex space-x-4">
+                    <label class="flex items-center">
+                        <input type="radio" name="realEstate" value="yes" class="mr-2">
+                        Own commercial real estate
+                    </label>
+                    <label class="flex items-center">
+                        <input type="radio" name="realEstate" value="no" class="mr-2">
+                        Lease/rent space
+                    </label>
+                </div>
+            </div>
+
+            <button onclick="calculateValue()" class="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors font-medium">
+                Calculate Valuation Range
+            </button>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="hidden space-y-6">
+            <div class="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-lg border-2 border-blue-200">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4 flex items-center">
+                    <svg class="h-6 w-6 text-green-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                    </svg>
+                    Your Texas Business Valuation Range
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-4 mb-6">
+                    <div class="bg-white p-4 rounded-lg border">
+                        <h3 class="font-semibold text-gray-700 mb-2">Asset-Based Approach</h3>
+                        <p id="assetBased" class="text-2xl font-bold text-blue-600"></p>
+                        <p class="text-sm text-gray-500">Revenue multiple method</p>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border">
+                        <h3 class="font-semibold text-gray-700 mb-2">Earnings-Based Approach</h3>
+                        <p id="earningsBased" class="text-2xl font-bold text-green-600"></p>
+                        <p class="text-sm text-gray-500">SDE multiple method</p>
+                    </div>
+                    
+                    <div class="bg-white p-4 rounded-lg border">
+                        <h3 class="font-semibold text-gray-700 mb-2">Market-Based Approach</h3>
+                        <p id="marketBased" class="text-2xl font-bold text-purple-600"></p>
+                        <p class="text-sm text-gray-500">Optimized SDE method</p>
+                    </div>
+                </div>
+
+                <div class="bg-amber-50 border border-amber-200 p-4 rounded-lg">
+                    <div class="flex items-start">
+                        <svg class="h-5 w-5 text-amber-500 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.963-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                        </svg>
+                        <div>
+                            <h3 id="rangeText" class="font-semibold text-amber-800 mb-1"></h3>
+                            <p id="gapText" class="text-amber-700 text-sm"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Complexity Section -->
+            <div id="complexitySection" class="hidden bg-red-50 border-2 border-red-200 p-6 rounded-lg fade-in">
+                <h2 class="text-xl font-bold text-red-800 mb-4 flex items-center">
+                    <svg class="h-6 w-6 text-red-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    Why This Range Exists: The Hidden Complexity
+                </h2>
+                
+                <p id="complexityIntro" class="text-red-700 mb-4"></p>
+
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div class="bg-white p-4 rounded border-l-4 border-red-400">
+                        <h4 class="font-semibold text-gray-800">Market Timing</h4>
+                        <p class="text-sm text-gray-600 mb-1">Current Texas market conditions</p>
+                        <p class="text-sm font-medium text-red-600">Potential Impact: $50K - $300K</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border-l-4 border-red-400">
+                        <h4 class="font-semibold text-gray-800">Buyer Type</h4>
+                        <p class="text-sm text-gray-600 mb-1">Strategic vs Financial vs Individual buyers</p>
+                        <p class="text-sm font-medium text-red-600">Potential Impact: $100K - $500K</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border-l-4 border-red-400">
+                        <h4 class="font-semibold text-gray-800">Deal Structure</h4>
+                        <p class="text-sm text-gray-600 mb-1">Asset sale vs Stock sale vs Earnout</p>
+                        <p class="text-sm font-medium text-red-600">Potential Impact: $75K - $400K</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border-l-4 border-red-400">
+                        <h4 class="font-semibold text-gray-800">Tax Optimization</h4>
+                        <p class="text-sm text-gray-600 mb-1">Section 1202, Installment sales, etc.</p>
+                        <p class="text-sm font-medium text-red-600">Potential Impact: $50K - $200K</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border-l-4 border-red-400">
+                        <h4 class="font-semibold text-gray-800">Due Diligence Prep</h4>
+                        <p class="text-sm text-gray-600 mb-1">Financial cleanup and presentation</p>
+                        <p class="text-sm font-medium text-red-600">Potential Impact: $25K - $150K</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border-l-4 border-red-400">
+                        <h4 class="font-semibold text-gray-800">Negotiation Strategy</h4>
+                        <p class="text-sm text-gray-600 mb-1">Professional vs DIY negotiation</p>
+                        <p class="text-sm font-medium text-red-600">Potential Impact: $100K - $350K</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border-l-4 border-red-400">
+                        <h4 class="font-semibold text-gray-800">Confidentiality Management</h4>
+                        <p class="text-sm text-gray-600 mb-1">Protecting business value during sale</p>
+                        <p class="text-sm font-medium text-red-600">Potential Impact: $50K - $250K</p>
+                    </div>
+                    <div class="bg-white p-4 rounded border-l-4 border-red-400">
+                        <h4 class="font-semibold text-gray-800">Legal Structure</h4>
+                        <p class="text-sm text-gray-600 mb-1">Contract terms and risk allocation</p>
+                        <p class="text-sm font-medium text-red-600">Potential Impact: $30K - $175K</p>
+                    </div>
+                </div>
+
+                <div class="mt-6 bg-gray-800 text-white p-4 rounded-lg">
+                    <h3 class="font-bold mb-2">The Bottom Line:</h3>
+                    <p class="mb-2">
+                        This calculator reveals the complexity of Texas business valuations. Each factor above could swing your final sale price by hundreds of thousands of dollars.
+                    </p>
+                    <p id="bottomLine" class="font-semibold"></p>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="bg-blue-600 text-white p-6 rounded-lg text-center">
+                <h2 class="text-2xl font-bold mb-3">Ready to Move from Estimates to Strategy?</h2>
+                <p class="mb-4 text-blue-100">
+                    This calculator shows you the playing field. Winning the game requires expertise, strategy, and execution specific to Texas markets.
+                </p>
+                <div class="space-y-2 text-sm text-blue-100">
+                    <p>✓ Get a precise, defensible valuation backed by Texas market data</p>
+                    <p>✓ Access our private network of pre-qualified Texas buyers</p>
+                    <p>✓ Optimize each factor to maximize your final sale price</p>
+                </div>
+                <button class="mt-4 bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                    Schedule Your Texas Business Value Assessment
+                </button>
+            </div>
+
+            <button onclick="resetCalculator()" class="w-full bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition-colors">
+                Calculate Another Business
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0,
+            }).format(amount);
+        }
+
+        function calculateValue() {
+            // Get form values
+            const industry = document.getElementById('industry').value;
+            const revenue = parseFloat(document.getElementById('revenue').value);
+            const sde = parseFloat(document.getElementById('sde').value);
+            const years = document.getElementById('years').value;
+            const employees = document.getElementById('employees').value;
+            const ownerInvolvement = document.getElementById('ownerInvolvement').value;
+            const realEstate = document.querySelector('input[name="realEstate"]:checked')?.value;
+            const location = document.getElementById('location').value;
+
+            // Validate inputs
+            if (!industry || !revenue || !sde || !years || !employees || !ownerInvolvement || !realEstate || !location) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            if (revenue < 500000) {
+                alert('This calculator is for businesses with revenue of $500K or more');
+                return;
+            }
+
+            if (sde < 50000) {
+                alert('Please enter a realistic SDE/EBITDA amount');
+                return;
+            }
+
+            if (sde > revenue * 0.6) {
+                alert('SDE cannot exceed 60% of revenue. Please check your numbers.');
+                return;
+            }
+
+            // SDE multipliers by industry (more realistic)
+            const sdeMultipliers = {
+                'Electrical Contracting': { min: 2.5, max: 3.8 },
+                'Plumbing Services': { min: 2.2, max: 3.5 },
+                'HVAC Services': { min: 2.3, max: 3.6 },
+                'Construction': { min: 1.8, max: 2.8 },
+                'Oil & Gas Services': { min: 2.0, max: 3.2 },
+                'Solar/Energy Services': { min: 2.8, max: 4.2 },
+                'Industrial Supply': { min: 1.8, max: 3.0 },
+                'Materials Distribution': { min: 1.5, max: 2.5 },
+                'B2B Services': { min: 2.2, max: 3.5 },
+                'Property Management': { min: 2.8, max: 4.5 },
+                'Other': { min: 2.0, max: 3.2 }
+            };
+
+            // Revenue multipliers (much lower, for asset-based approach)
+            const revenueMultipliers = {
+                'Electrical Contracting': { min: 0.8, max: 1.2 },
+                'Plumbing Services': { min: 0.7, max: 1.1 },
+                'HVAC Services': { min: 0.8, max: 1.2 },
+                'Construction': { min: 0.5, max: 0.9 },
+                'Oil & Gas Services': { min: 0.6, max: 1.0 },
+                'Solar/Energy Services': { min: 0.9, max: 1.4 },
+                'Industrial Supply': { min: 0.6, max: 1.0 },
+                'Materials Distribution': { min: 0.4, max: 0.8 },
+                'B2B Services': { min: 0.7, max: 1.1 },
+                'Property Management': { min: 0.9, max: 1.5 },
+                'Other': { min: 0.6, max: 1.0 }
+            };
+
+            const sdeMultiplier = sdeMultipliers[industry] || { min: 2.0, max: 3.2 };
+            const revMultiplier = revenueMultipliers[industry] || { min: 0.6, max: 1.0 };
+
+            // Location adjustments
+            const locationBonus = location === 'Dallas-Fort Worth' ? 1.15 : 
+                                 location === 'Houston' ? 1.12 : 
+                                 location === 'Austin' ? 1.18 : 
+                                 location === 'East Texas' ? 0.95 : 1.0;
+
+            // Experience adjustments
+            const yearsBonus = parseInt(years) > 10 ? 1.1 : 
+                              parseInt(years) > 5 ? 1.05 : 0.95;
+
+            // Calculate three approaches with proper methods
+            const assetBased = Math.round(revenue * revMultiplier.min * locationBonus * yearsBonus);
+            const earningsBased = Math.round(sde * sdeMultiplier.min * locationBonus * yearsBonus);
+            const marketBased = Math.round(sde * sdeMultiplier.max * locationBonus * yearsBonus);
+
+            // Use the earnings-based as the low end, market-based as high end for the range
+            const rangeLow = Math.min(earningsBased, assetBased);
+            const rangeHigh = marketBased;
+
+            // Display results
+            document.getElementById('assetBased').textContent = formatCurrency(assetBased);
+            document.getElementById('earningsBased').textContent = formatCurrency(earningsBased);
+            document.getElementById('marketBased').textContent = formatCurrency(marketBased);
+
+            const gap = rangeHigh - rangeLow;
+            document.getElementById('rangeText').textContent = `Valuation Range: ${formatCurrency(rangeLow)} - ${formatCurrency(rangeHigh)}`;
+            document.getElementById('gapText').innerHTML = `<strong>Gap of ${formatCurrency(gap)}</strong> - This represents the difference between doing this right and doing it wrong.`;
+
+            // Show results
+            document.getElementById('calculatorForm').style.display = 'none';
+            document.getElementById('resultsSection').classList.remove('hidden');
+
+            // Show complexity after 2 seconds
+            setTimeout(() => {
+                document.getElementById('complexityIntro').innerHTML = `The calculator shows <strong>what</strong> your business might be worth, but it can't show you <strong>how</strong> to get to the high end of that range. Here are the 8 critical factors that determine whether you get ${formatCurrency(rangeLow)} or ${formatCurrency(rangeHigh)}:`;
+                document.getElementById('bottomLine').textContent = `The difference between the low and high end of your range could be ${formatCurrency(gap)} in your pocket. That's what professional Texas business exit specialists help you capture.`;
+                document.getElementById('complexitySection').classList.remove('hidden');
+            }, 2000);
+        }
+
+        function resetCalculator() {
+            // Reset form
+            document.getElementById('industry').value = '';
+            document.getElementById('revenue').value = '';
+            document.getElementById('sde').value = '';
+            document.getElementById('years').value = '';
+            document.getElementById('employees').value = '';
+            document.getElementById('ownerInvolvement').value = '';
+            document.getElementById('location').value = '';
+            document.querySelectorAll('input[name="realEstate"]').forEach(input => input.checked = false);
+
+            // Hide results and show form
+            document.getElementById('resultsSection').classList.add('hidden');
+            document.getElementById('complexitySection').classList.add('hidden');
+            document.getElementById('calculatorForm').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

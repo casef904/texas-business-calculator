@@ -20,7 +20,7 @@
         <div class="text-center mb-8">
             <div class="flex items-center justify-center mb-4">
                 <svg class="h-12 w-12 text-blue-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 002 2z"></path>
                 </svg>
                 <h1 class="text-3xl font-bold text-gray-900">Texas Business Exit Calculator</h1>
             </div>
@@ -29,7 +29,6 @@
                 ⚠️ For businesses generating $500K - $10M annually
             </div>
         </div>
-
         <!-- Form Section -->
         <div id="calculatorForm" class="space-y-6 bg-gray-50 p-6 rounded-lg">
             <div class="grid md:grid-cols-2 gap-6">
@@ -55,7 +54,6 @@
                         <option value="Other">Other</option>
                     </select>
                 </div>
-
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         <svg class="h-4 w-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -65,7 +63,6 @@
                     </label>
                     <input type="number" id="revenue" placeholder="Enter annual revenue" min="500000" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
                 </div>
-
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         <svg class="h-4 w-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -76,11 +73,10 @@
                     <input type="number" id="sde" placeholder="Seller's Discretionary Earnings" min="50000" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
                     <p class="text-xs text-gray-500 mt-1">Net income + owner salary + benefits + non-business expenses + depreciation</p>
                 </div>
-
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         <svg class="h-4 w-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2z"></path>
                         </svg>
                         Years in Business
                     </label>
@@ -92,7 +88,6 @@
                         <option value="20">15+ years</option>
                     </select>
                 </div>
-
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                         <svg class="h-4 w-4 inline mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -108,7 +103,6 @@
                         <option value="50+">50+ employees</option>
                     </select>
                 </div>
-
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Owner Involvement Level</label>
                     <select id="ownerInvolvement" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
@@ -119,7 +113,6 @@
                         <option value="0-20%">0-20% (Minimal involvement)</option>
                     </select>
                 </div>
-
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">Texas Location</label>
                     <select id="location" class="w-full p-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500">
@@ -133,7 +126,6 @@
                     </select>
                 </div>
             </div>
-
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">Real Estate Ownership</label>
                 <div class="flex space-x-4">
@@ -147,12 +139,10 @@
                     </label>
                 </div>
             </div>
-
             <button onclick="calculateValue()" class="w-full bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors font-medium">
                 Calculate Valuation Range
             </button>
         </div>
-
         <!-- Results Section -->
         <div id="resultsSection" class="hidden space-y-6">
             <div class="bg-gradient-to-r from-blue-50 to-green-50 p-6 rounded-lg border-2 border-blue-200">
@@ -182,7 +172,6 @@
                         <p class="text-sm text-gray-500">Optimized SDE method</p>
                     </div>
                 </div>
-
                 <div class="bg-amber-50 border border-amber-200 p-4 rounded-lg">
                     <div class="flex items-start">
                         <svg class="h-5 w-5 text-amber-500 mt-0.5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -195,7 +184,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- Complexity Section -->
             <div id="complexitySection" class="hidden bg-red-50 border-2 border-red-200 p-6 rounded-lg fade-in">
                 <h2 class="text-xl font-bold text-red-800 mb-4 flex items-center">
@@ -206,7 +194,6 @@
                 </h2>
                 
                 <p id="complexityIntro" class="text-red-700 mb-4"></p>
-
                 <div class="grid md:grid-cols-2 gap-4">
                     <div class="bg-white p-4 rounded border-l-4 border-red-400">
                         <h4 class="font-semibold text-gray-800">Market Timing</h4>
@@ -249,7 +236,6 @@
                         <p class="text-sm font-medium text-red-600">Potential Impact: $30K - $175K</p>
                     </div>
                 </div>
-
                 <div class="mt-6 bg-gray-800 text-white p-4 rounded-lg">
                     <h3 class="font-bold mb-2">The Bottom Line:</h3>
                     <p class="mb-2">
@@ -258,7 +244,6 @@
                     <p id="bottomLine" class="font-semibold"></p>
                 </div>
             </div>
-
             <!-- Call to Action -->
             <div class="bg-blue-600 text-white p-6 rounded-lg text-center">
                 <h2 class="text-2xl font-bold mb-3">Ready to Move from Estimates to Strategy?</h2>
@@ -270,17 +255,15 @@
                     <p>✓ Access our private network of pre-qualified Texas buyers</p>
                     <p>✓ Optimize each factor to maximize your final sale price</p>
                 </div>
-                <button class="mt-4 bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                <a href="https://calendly.com/casey-onerocktx/texas-business-value-assessment" target="_blank" class="mt-4 bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors inline-block">
                     Schedule Your Texas Business Value Assessment
-                </button>
+                </a>
             </div>
-
             <button onclick="resetCalculator()" class="w-full bg-gray-500 text-white py-2 px-4 rounded-md hover:bg-gray-600 transition-colors">
                 Calculate Another Business
             </button>
         </div>
     </div>
-
     <script>
         function formatCurrency(amount) {
             return new Intl.NumberFormat('en-US', {
@@ -290,7 +273,6 @@
                 maximumFractionDigits: 0,
             }).format(amount);
         }
-
         function calculateValue() {
             // Get form values
             const industry = document.getElementById('industry').value;
@@ -301,28 +283,23 @@
             const ownerInvolvement = document.getElementById('ownerInvolvement').value;
             const realEstate = document.querySelector('input[name="realEstate"]:checked')?.value;
             const location = document.getElementById('location').value;
-
             // Validate inputs
             if (!industry || !revenue || !sde || !years || !employees || !ownerInvolvement || !realEstate || !location) {
                 alert('Please fill in all fields');
                 return;
             }
-
             if (revenue < 500000) {
                 alert('This calculator is for businesses with revenue of $500K or more');
                 return;
             }
-
             if (sde < 50000) {
                 alert('Please enter a realistic SDE/EBITDA amount');
                 return;
             }
-
             if (sde > revenue * 0.6) {
                 alert('SDE cannot exceed 60% of revenue. Please check your numbers.');
                 return;
             }
-
             // SDE multipliers by industry (more realistic)
             const sdeMultipliers = {
                 'Electrical Contracting': { min: 2.5, max: 3.8 },
@@ -337,7 +314,6 @@
                 'Property Management': { min: 2.8, max: 4.5 },
                 'Other': { min: 2.0, max: 3.2 }
             };
-
             // Revenue multipliers (much lower, for asset-based approach)
             const revenueMultipliers = {
                 'Electrical Contracting': { min: 0.8, max: 1.2 },
@@ -352,42 +328,33 @@
                 'Property Management': { min: 0.9, max: 1.5 },
                 'Other': { min: 0.6, max: 1.0 }
             };
-
             const sdeMultiplier = sdeMultipliers[industry] || { min: 2.0, max: 3.2 };
             const revMultiplier = revenueMultipliers[industry] || { min: 0.6, max: 1.0 };
-
             // Location adjustments
             const locationBonus = location === 'Dallas-Fort Worth' ? 1.15 : 
                                  location === 'Houston' ? 1.12 : 
                                  location === 'Austin' ? 1.18 : 
                                  location === 'East Texas' ? 0.95 : 1.0;
-
             // Experience adjustments
             const yearsBonus = parseInt(years) > 10 ? 1.1 : 
                               parseInt(years) > 5 ? 1.05 : 0.95;
-
             // Calculate three approaches with proper methods
             const assetBased = Math.round(revenue * revMultiplier.min * locationBonus * yearsBonus);
             const earningsBased = Math.round(sde * sdeMultiplier.min * locationBonus * yearsBonus);
             const marketBased = Math.round(sde * sdeMultiplier.max * locationBonus * yearsBonus);
-
             // Use the earnings-based as the low end, market-based as high end for the range
             const rangeLow = Math.min(earningsBased, assetBased);
             const rangeHigh = marketBased;
-
             // Display results
             document.getElementById('assetBased').textContent = formatCurrency(assetBased);
             document.getElementById('earningsBased').textContent = formatCurrency(earningsBased);
             document.getElementById('marketBased').textContent = formatCurrency(marketBased);
-
             const gap = rangeHigh - rangeLow;
             document.getElementById('rangeText').textContent = `Valuation Range: ${formatCurrency(rangeLow)} - ${formatCurrency(rangeHigh)}`;
             document.getElementById('gapText').innerHTML = `<strong>Gap of ${formatCurrency(gap)}</strong> - This represents the difference between doing this right and doing it wrong.`;
-
             // Show results
             document.getElementById('calculatorForm').style.display = 'none';
             document.getElementById('resultsSection').classList.remove('hidden');
-
             // Show complexity after 2 seconds
             setTimeout(() => {
                 document.getElementById('complexityIntro').innerHTML = `The calculator shows <strong>what</strong> your business might be worth, but it can't show you <strong>how</strong> to get to the high end of that range. Here are the 8 critical factors that determine whether you get ${formatCurrency(rangeLow)} or ${formatCurrency(rangeHigh)}:`;
@@ -395,7 +362,6 @@
                 document.getElementById('complexitySection').classList.remove('hidden');
             }, 2000);
         }
-
         function resetCalculator() {
             // Reset form
             document.getElementById('industry').value = '';
@@ -406,7 +372,6 @@
             document.getElementById('ownerInvolvement').value = '';
             document.getElementById('location').value = '';
             document.querySelectorAll('input[name="realEstate"]').forEach(input => input.checked = false);
-
             // Hide results and show form
             document.getElementById('resultsSection').classList.add('hidden');
             document.getElementById('complexitySection').classList.add('hidden');
